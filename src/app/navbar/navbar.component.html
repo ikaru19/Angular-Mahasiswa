@@ -1,0 +1,144 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img src="https://kanalmahasiswa.com/wp-content/uploads/2016/02/logo-KM-Square.png" width="30" height="30" class="d-inline-block align-top"
+      alt="">
+    Mahasiswa
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div *ngIf="authService.user | async" class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact : true}">
+        <a class="nav-link" routerLink="/dashboard"> Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/mahasiswa"> Mahasiswa <span class="sr-only">(current)</span></a>
+      </li>
+      <!-- <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/add_mahasiswa">Add</a>
+      </li> -->
+      <li class="nav-item">
+
+        <!-- <a class="nav-link" (click)="open(content)">Add</a> -->
+      </li>
+    </ul>
+
+    <app-mhs-search></app-mhs-search>
+    <button class="btn btn-info ml-3" (click)="open(content)">Add</button>
+    <app-profile class="ml-3"></app-profile>
+  </div>
+  <!-- <div *ngIf="!(authService.user | async)" class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact : true}">
+        <a class="nav-link" routerLink="/login"> Login <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/register"> Register <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div> -->
+</nav>
+<!-- <ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          
+<app-add-heroes></app-add-heroes>
+</div>
+</ng-template> -->
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <div class="form-group">
+      <label for="InputNama">NIM: </label>
+      <input #inputNim class="form-control" id="InputNama" type="number" min="1" />
+
+    </div>
+    <div class="form-group">
+      <label for="InputNama">Nama: </label>
+      <input #inputNama class="form-control" id="InputNama" required />
+    </div>
+    <div class="form-group">
+      <label for="InputAlamat">Alamat : </label>
+      <textarea #inputAlamat class="form-control" id="InputAlamat" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="input-group">Jenis Kelamin : </label>
+      <div class="input-group">
+        <div class="form-check">
+          <input #inputJK class="form-check-input" type="radio" name="jkRadios" id="lkRadios" value="laki - laki"
+            (change)="radioChangeHandler($event)">
+          <label class="form-check-label" for="lkRadios">
+            Laki - Laki
+          </label>
+        </div>
+        <div class="form-check ml-3">
+          <input #inputJK class="form-check-input" type="radio" name="jkRadios" id="prRadios" value="perempuan"
+            (change)="radioChangeHandler($event)">
+          <label class="form-check-label" for="prRadios">
+            Perempuan
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="InputNamaAyah">Nama Bapak : </label>
+      <input #inputAyah class="form-control" id="InputNamaAyah" required>
+    </div>
+    <div class="form-group">
+      <label for="InputNamaIbu">Nama Ibu : </label>
+      <input #inputIbu class="form-control" id="InputNamaIbu" required>
+    </div>
+
+    <div class="form-group">
+      <label for="jurusanControlSelect">Jurusan : </label>
+      <select #jurusan class="form-control" id="jurusanControlSelect" (change)="onChange($event)" required>
+        <option value="EL">Teknik Elektro</option>
+        <option value="MS">Teknik Mesin</option>
+        <option value="TI">Teknik Informasi</option>
+        <option value="AN">Administrasi Niaga</option>
+        <option value="AK">Akuntansi</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="prodiControlSelect">Prodi : </label>
+      <select #prodi class="form-control" id="prodiControlSelect" required>
+        <option *ngIf="jurusan.value == 'EL'" value="EL3">D3 Teknik Elektro</option>
+        <option *ngIf="jurusan.value == 'EL'" value="EL4">D4 Teknik Elektro</option>
+        <option *ngIf="jurusan.value == 'AN'" value="MP">D4 Manajemen Pemasaran</option>
+        <option *ngIf="jurusan.value == 'AN'" value="AB">D3 Administrasi Bisnis</option>
+        <option *ngIf="jurusan.value == 'MS'" value="MS3">D3 Teknik Mesin</option>
+        <option *ngIf="jurusan.value == 'MS'" value="MS4">D4 Teknik Mesin</option>
+        <option *ngIf="jurusan.value == 'AK'" value="AK3">D3 Akuntansi</option>
+        <option *ngIf="jurusan.value == 'AK'" value="AK4">D4 Akuntansi</option>
+        <option *ngIf="jurusan.value == 'TI'" value="MI">D3 Manajemen Informatika</option>
+        <option *ngIf="jurusan.value == 'TI'" value="TI">D4 Teknik Informatika</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="InputIPK">IPK Akhir : </label>
+      <input #inputIPK class="form-control" id="InputIPK" min="1" max="4" type="number">
+    </div>
+
+    <p #jk style="display:none">{{selectedJK}}</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-info ml-1" (click)="add(inputNim.value,inputNama.value,this.inputJK.value,inputAlamat.value,inputAyah.value,inputIbu.value,jurusan.value,prodi.value,inputIPK.value )
+  ;modal.close('Save click')">
+      add
+    </button>
+  </div>
+</ng-template>

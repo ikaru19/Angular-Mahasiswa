@@ -1,0 +1,42 @@
+<h2>Daftar Mahasiswa Polinema</h2>
+<!-- <div class="list-group">
+  <div class="list-group-item list-group-item-action m-2" *ngFor="let mhs of mhss">
+    <div  >
+      <a  class="float-left" routerLink="/detail/{{mhs.id}}">
+        <b> {{mhs.nim}} </b>| {{mhs.nama}}
+      </a>
+      <button class="btn btn-danger float-right" title="delete hero" (click)="delete(mhs)">Delete</button>
+
+    </div>
+  </div>
+</div> -->
+
+
+
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">NIM</th>
+        <th scope="col">Nama</th>
+        <th scope="col">Alamat</th>
+        <th scope="col">Jurusan</th>
+        <th scope="col">Prodi</th>
+        <th scope="col">Action </th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let mhs of mhss" >
+          <th scope="row">{{mhs.nim}}</th>
+          <td>{{mhs.nama}}</td>
+          <td>{{mhs.alamat}}</td>
+          <td>{{mhs.jurusan}}</td>
+          <td>{{mhs.jk}}</td>
+          <td>
+            <button class="btn btn-info" routerLink="/detail/{{mhs.id}}"  >Edit</button>
+            <button class="btn btn-danger ml-3" (click)="delete(mhs)" >Delete</button>
+          </td>
+        </tr>
+    </tbody>
+</table>    
+
+<!-- <app-mahasiswa-detail [mhs]="selectedMhs"></app-mahasiswa-detail> -->

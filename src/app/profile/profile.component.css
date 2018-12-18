@@ -1,0 +1,14 @@
+.result {
+    position: fixed !important; /* instead of : position:absolute;*/
+    top:7% !important;     /*     instead of : top:100%; */
+    z-index: 50;
+    right: 10px;
+    left: 85% !important;
+    float: right !important;
+  }
+
+  .kotak {
+     /* instead of : position:absolute;*/
+    top:10%;     /*     instead of : top:100%; */
+    z-index: 50;
+  }  

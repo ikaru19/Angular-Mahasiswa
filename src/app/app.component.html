@@ -1,0 +1,7 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <app-login  *ngIf="!(authService.user | async)"></app-login>
+  <router-outlet *ngIf="authService.user | async"></router-outlet>
+  <!-- <app-messages></app-messages> -->
+</div>
+

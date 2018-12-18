@@ -1,0 +1,20 @@
+<div *ngIf="!(authService.user | async)">
+ 
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="text"  [(ngModel)]="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" [(ngModel)]="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+        <button class="btn btn-primary"  (click)="login()" [disabled]="!email || !password"> Login</button>
+        <button class="btn btn-secondary ml-3"  (click)="signup()" [disabled]="!email || !password"> Register</button>
+
+  <!-- <button (click)="signup()" [disabled]="!email || !password">
+    Signup
+  </button> -->
+
+ 
+</div>

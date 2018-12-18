@@ -1,0 +1,20 @@
+<h3>Top 10 Mahasiswa</h3>
+<div class="row">
+  <div *ngFor="let mhs of mhss" class="col-md-3 ml-3 mr-3 mt-3  ">
+      <div class="card" style="width: 18rem;">
+          <div class="card-body" >
+            <h5 class="card-title" >
+              <a routerLink="/detail/{{mhs.id}}">{{mhs.nama}}  </a>             
+            </h5>
+            <p class="card-text">
+                NIM    : {{mhs.nim}} <br/>
+                Alamat  : {{mhs.alamat}} <br/>
+                Jurusan : {{mhs.jurusan}} <br/>
+                Prodi : {{mhs.prodi}} <br/>
+                IPK Akhir : {{mhs.ipk}}
+            </p>
+            <a routerLink="/detail/{{mhs.id}}" class="btn btn-primary">Detail</a>
+          </div>
+        </div> 
+      </div>
+</div>

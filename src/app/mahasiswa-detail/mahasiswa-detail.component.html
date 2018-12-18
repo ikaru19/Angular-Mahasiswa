@@ -1,0 +1,75 @@
+<h2>{{mhs.nama}} Details</h2>
+
+<div *ngIf="mhs">
+  <div class="form-group">
+    <label for="InputNim">NIM</label>
+    <input [(ngModel)]="mhs.nim" class="form-control" id="InputNim">
+  </div>
+  <div class="form-group">
+    <label for="InputNama">Nama : </label>
+    <input [(ngModel)]="mhs.nama" class="form-control" id="InputNama">
+  </div>
+  <div class="form-group">
+    <label for="InputAlamat">Alamat : </label>
+    <textarea [(ngModel)]="mhs.alamat" class="form-control" id="InputAlamat"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="input-group">Jenis Kelamin : </label>
+    <div class="input-group">
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="jkRadios" id="lkRadios" value="laki - laki" [(ngModel)]="mhs.jk" >
+        <label class="form-check-label" for="lkRadios">
+          Laki - Laki
+        </label>
+      </div>
+      <div class="form-check ml-3">
+        <input class="form-check-input" type="radio" name="jkRadios" id="prRadios" value="perempuan" [(ngModel)]="mhs.jk">
+        <label class="form-check-label" for="prRadios">
+          Perempuan
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+      <label for="InputNamaAyah">Nama Bapak : </label>
+      <input [(ngModel)]="mhs.nama_bapak" class="form-control" id="InputNamaAyah">
+  </div>
+  <div class="form-group">
+      <label for="InputNamaIbu">Nama Ibu : </label>
+      <input [(ngModel)]="mhs.nama_ibu" class="form-control" id="InputNamaIbu">
+  </div>
+  <div class="form-group">
+      <label for="jurusanControlSelect">Jurusan : </label>
+      <select class="form-control" id="jurusanControlSelect" [(ngModel)]="mhs.jurusan">
+        <option value="EL">Teknik Elektro</option>
+        <option value="MS">Teknik Mesin</option>
+        <option value="TI">Teknik Informasi</option>
+        <option value="AN">Administrasi Niaga</option>
+        <option value="AK">Akuntansi</option>
+      </select>
+    </div>
+    <div class="form-group">
+        <label for="prodiControlSelect">Prodi : </label>
+        <select  class="form-control" id="prodiControlSelect" [(ngModel)]="mhs.prodi">
+          <option *ngIf="mhs.jurusan == 'EL'" value="EL3">D3 Teknik Elektro</option>
+          <option *ngIf="mhs.jurusan == 'EL'" value="EL4">D4 Teknik Elektro</option>
+          <option *ngIf="mhs.jurusan == 'AN'" value="MP">D4 Manajemen Pemasaran</option>
+          <option *ngIf="mhs.jurusan == 'AN'" value="AB">D3 Administrasi Bisnis</option>
+          <option *ngIf="mhs.jurusan == 'MS'" value="MS3">D3 Teknik Mesin</option>
+          <option *ngIf="mhs.jurusan == 'MS'" value="MS4">D4 Teknik Mesin</option>
+          <option *ngIf="mhs.jurusan == 'AK'" value="AK3">D3 Akuntansi</option>
+          <option *ngIf="mhs.jurusan == 'AK'" value="AK4">D4 Akuntansi</option>
+          <option *ngIf="mhs.jurusan == 'TI'" value="MI">D3 Manajemen Informatika</option>
+          <option *ngIf="mhs.jurusan == 'TI'" value="TI">D4 Teknik Informatika</option>
+        </select>
+     </div>
+     <div class="form-group">
+        <label for="InputIPK">IPK Akhir : </label>
+        <input [(ngModel)]="mhs.ipk" class="form-control" type="number" min="0" max="4" id="InputIPK">
+    </div>
+  
+
+ 
+  <button type="button" class="btn btn-info mt-3" (click)="goBack()" >Back</button>
+  <button (click)="save()" class="btn btn-success ml-3 mt-3">Save</button>
+ 

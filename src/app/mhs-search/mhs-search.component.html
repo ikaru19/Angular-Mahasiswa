@@ -1,0 +1,13 @@
+<form class="form-inline my-2 my-lg-0">
+  <input   #searchBox class="form-control mr-sm-2" 
+        placeholder="Search" aria-label="Search" (input)="search(searchBox.value)">
+  <button class="btn btn-outline-info my-2 my-sm-0" type="submit"><i class="fa fa-search" aria-hidden="true"></i>
+  </button>
+</form>
+<ul class="search-result list-group my-2 my-sm-0">
+  <li class="list-group-item list-group-item-action" *ngFor="let mhs of mhss$ | async" >
+    <a class="" routerLink="/detail/{{mhs.id}}" (click)="search-result.remove; searchBox.value =''">
+      {{mhs.nama}}
+    </a>
+  </li>
+</ul>
